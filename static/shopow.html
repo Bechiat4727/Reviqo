@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviqo</title>
+    <!-- Sidebar -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="profile-section">
+            <div class="profile-pic">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-name">John Doe</div>
+            <div class="profile-email">john.doe@example.com</div>
+        </div>
+        <a href="#" onclick="window.location.href='profilso.html'; return false">
+            <div class="menu-item">
+                <div class="menu-icon">
+                <i class="fas fa-user-edit"></i>
+                </div>
+                <div class="menu-text">Edit Profile</div>
+            </div>
+        </a>
+
+        <div class="divider"></div>
+
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="menu-text">Settings</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="menu-text">Help & Support</div>
+        </div>
+        <a href="#" onclick="window.location.href='Login.html'; return false;">
+            <div class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <div class="menu-text">Log Out</div>
+            </div>
+        </a>
+
+        <div class="divider"></div>
+
+        <div class="language-selector">
+            <div class="language-label">
+                <i class="fas fa-globe menu-icon"></i>
+                <span>Language</span>
+            </div>
+            <select>
+                <option value="en">English</option>
+                <option value="ar">Arabic</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+                <option value="de">German</option>
+            </select>
+        </div>
+
+        <div class="toggle-container">
+            <div class="toggle-label">
+                <i class="fas fa-moon toggle-icon"></i>
+                <span>Night Mode</span>
+            </div>
+            <label class="toggle-switch">
+                <input type="checkbox" id="nightModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        
+        <div class="search-bar">
+            <input type="text" placeholder="What are you looking for?">
+            <button>Search</button>
+        </div>
+        <div class="buttons" >
+            <a href="#" onclick="window.location.href='shopowpd.html' ;return false;">
+                 <button>
+                    <img src="img/briefcase.png" width="25" height="25" alt=""style="vertical-align: middle;">
+                    <span style="vertical-align: middle;">Business Dashbord</span> 
+                </button>
+            </a>
+            <a href="#" onclick="window.location.href='shoppage.html';return false;">
+                <button>
+                    <img src="img/view.png" width="25" height="25" alt=""style="vertical-align: middle;">
+                    <span style="vertical-align: middle;">View My Shop</span>
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="types">
+        <a>
+            <button class="title" type="button"> </button>
+             <h1 class="title"> Types of Shops ▼ </h1><br>
+        </a>
+    </div>
+    <!-- Categories -->
+     <a href="#" onclick="window.location.href='filter.html'; return false">
+        <div class="categories">
+        <!-- Example category -->
+            <div class="category-item">
+                <img src="img/Restaurent.jpg" alt="Category">
+                <div>Restaurent</div>
+            </div>
+            <div class="category-item">
+                <img src="img/coffee.jpg" alt="Category">
+                <div>Café</div>
+            </div>
+            <div class="category-item">
+                <img src="img/hotel.jpg" alt="Category">
+                <div>Hotel</div>
+            </div>
+            <div class="category-item">
+                <img src="img/market.jpg" alt="Category">
+                <div>Market</div>
+            </div>
+            <div class="category-item">
+                <img src="img/homme.jpg" alt="Category">
+                <div>Homme</div>
+            </div>
+            <div class="category-item">
+                <img src="img/femme.jpg" alt="Category">
+                <div>Femme</div>
+            </div>
+            <div class="category-item">
+                <img src="img/bebe.jpg" alt="Category">
+                <div>bebe</div>
+            </div>
+            <div class="category-item">
+                <img src="img/tourist.jpg" alt="Category">
+                <div>Tourist</div>
+            </div>
+            <div class="category-item">
+                <img src="img/menu.png" alt="Category">
+                <div>Autre</div>
+            </div>
+        </div>
+    </a>
+    
+    <h1>BEST OF </h1>
+    
+    <section class="featured-section">
+        <div class="featured-container">
+            <a href="#" onclick="window.location.href='hotel-rodina.html'; return false;">
+    <div class="featured">
+        <h2>Hotel Rodina</h2>
+    </div>
+    </a>
+    <a href="#" onclick="window.location.href='cafe-dubai.html'; return false;">
+    <div class="featured1">
+        <h2>Cafe Dubai</h2>
+        <img src="/placeholder.svg?height=200&width=300" alt="">
+    </div>
+    </a>
+    <button class="Discovermore" style="float: right;" onclick="window.location.href='filter.html'">Discover More →</button><br><br>
+    </div>
+    </section>
+
+    <!-- List Section -->
+<div class="list-section">
+    <!-- Example list item -->
+    <a href="chabati.html" style="text-decoration: none; color: inherit;">
+        <div class="list-item">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nobQZUqL8UW3KaIEZvOP1BsdhbE5BhwcikEUQsVR14f4A4g9X73UOI3ipwqKAIEJFT6rt2gLQmDkqoJiv14iACyHWqCJgI6kd_qQggnxS3PUu41l9XeDVjTSHZIrk0ZUVCphVbl=w533-h240-k-no" alt="Place">
+            <div>
+                <strong>Chabati Souse</strong><br>
+                Restaurent • Es senia En face Arret de Tramway Es senia Center<br>
+                Tunisian Meal CHAPATI Avec des Bonnes Prix.
+            </div>
+        </div>
+    </a>
+    <a href="sabah.html" style="text-decoration: none; color: inherit;">
+        <div class="list-item">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrtzyw87B_dUv6J09jHXkrk0yIK_3yiYW4dqciA1H1xp2ZgiPq34abSUiD4VcsuNpff9kk98LOdTM5gyra-Iq1hh_00-Tahtg_RBvM0cpKtBRvgDK6gY4amUX8sZPhm2k0g16s=w408-h306-k-no" alt="Place">
+            <div>
+                <strong>Sabah Café</strong><br>
+                Café • J9WH+H2G, N2A, Es Senia<br>
+                Authentic French café serving pastries, coffee, and light meals.
+            </div>
+        </div>
+    </a>
+    <a href="top+.html" style="text-decoration: none; color: inherit;">
+        <div class="list-item">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq5MEuHCq7mFP-Veb6d44A2P2QFg_jCJFEIKLKPW6wg30bUke_LeStQyvvBrMLGSHa3gDCq-W9kgCKiu_UkP0cwEE9IIT-vNHAz5RIae6xqnDCGMff3Z3TKlBIO0eIsNZJaWQ7XmQ=w426-h240-k-no" alt="Place">
+            <div>
+                <strong>Boutique TOP+</strong><br>
+                Homme • Bir El Djir PC3R+WWX<br>
+                Contemporary men's clothing and accessories for all occasions.
+            </div>
+        </div>
+    </a>
+    <a href="list-item-4.html" style="text-decoration: none; color: inherit;">
+        <div class="list-item">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npgk-P5yCfqddG-CjcT6rU_P6pgtyntZb5Sy9W11qOT8oATs4JFvUY5X4Ngzn8h1fjF0oJ0-b2TSAHbNv5zGl7d6mHMxpMYVgWMSEwmMdqz64FGJ4XfbEaK15lcmuj7zCJpjI9cgg=w408-h544-k-no" alt="Place">
+            <div>
+                <strong>Boutique HAYAT</strong><br>
+                Femme • 01 Bloc G2 ilot 18 Résidence ENNOUR Bir El Djir<br>
+                Trendy women's fashion with the latest styles and designer collections.
+            </div>
+        </div>
+    </a>
+</div>
+    
+    <div class="fullscreen-ad-container">
+        <div class="ad-close-btn" onclick="closeAd()">×</div>
+        <a href="https://example.com/shop" target="_blank" class="fullscreen-ad">
+          <img src="ad-banner.jpg" alt="Special Offer - Shop Now" class="ad-image">
+          <div class="ad-content">
+            <h2>HOTEL EXAMPLE</h2>
+            <p>Welcome to the hotel Example</p>
+            <button class="shop-now-btn">Disover & Review Now</button>
+          </div>
+        </a>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="img/logo.png" width="80" height="80" alt="Revigo Logo" class="footer-logo">
+                <h3>Stay in the loop and get our New Updates</h3>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Need Help?</h3>
+                <a href="#">Contact Us</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <a href="#">Home</a>
+                <a href="#">Feedback</a>
+                <a href="#">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Our Team</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Social Media</h3>
+                <div class="social-icons">
+                    <div class="facebook">
+                        <a href="#" onclick="window.location.href='https://www.facebook.com/?locale=ar_AR'; return false">
+                            <img src="img/facebook (1).png" width="25" height="25"style="vertical-align: middle;"></img>
+                            <span style="vertical-align: middle;">Facebook</span>
+                        </a>
+                    </div><br>
+                    <div class="instagram">
+                        <a href="#" onclick="window.location.href='https://www.instagram.com/';return false">
+                            <img src="img/instagram (1).png" width="25" height="25"style="vertical-align: middle;"></img>
+                            <span style="vertical-align: middle;">Instagram</span>
+                        </a>
+                    </div><br>
+                    <div class="LinkedIn">
+                        <a href="#" onclick="window.location.href='https://dz.linkedin.com/';return false">
+                            <img src="img/linkedin.png" width="25" height="25"style="vertical-align: middle;"></img>
+                            <span style="vertical-align: middle;">LinkedIn</span>
+                        </a>
+                    </div><br>
+                    <div class="TikTok">
+                        <a href="#" onclick="window.location.href='https://www.tiktok.com/ar/'; return false">
+                            <img src="img/tik-tok.png" width="25" height="25"style="vertical-align: middle;"></img>
+                            <span style="vertical-align: middle;">TikTok</span>
+                        </a>
+                    </div><br>
+                    <div class="Youtube">
+                        <a href="#" onclick="window.location.href='https://www.youtube.com';return false">
+                            <img src="img/youtube.png" width="25" height="25"style="vertical-align: middle;"></img>
+                            <span style="vertical-align: middle;">Youtube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Message pour Améliorer Notre Site</h3>
+                <form class="feedback-form">
+                    <input type="text" placeholder="Your feedback...">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <!-- Chatbot Container -->
+        <div class="chatbot-container" id="chatbotContainer">
+            <div class="chatbot-header">
+                <h3>Reviqo Assistant</h3>
+                <button class="close-chatbot" id="closeChatbot">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="userInput" placeholder="Type your question here...">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+  
+        <!-- Messenger Button -->
+        <div class="messenger-button" id="messengerButton">
+            <div class="messenger-icon">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <div class="messenger-text">Need Help?</div>
+        </div>
+        <div class="copyright">
+        <p>© 2025 Revigo All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="home.js">
+        
+    </script>
+</body>
+</html>

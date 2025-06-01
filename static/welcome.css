@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100vh; /* يأخذ طول الشاشة كامل */
+    margin: 0;
+    background-image: url('img/bbg.png'); /* ضع هنا رابط صورتك */
+  
+  }
+  .welcome{
+    padding: 20px;
+    border: none;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #ff8144;
+    color: white;
+    margin-bottom: 30px;
+  }
+  .welcome:hover{
+    background-color: black;
+    color: white;
+  }
+  .profile-section {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.profile-email {
+    color: #666;
+    font-size: 0.9em;
+}

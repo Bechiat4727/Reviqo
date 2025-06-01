@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="confirm.css">
+</head>
+<body>
+    <div class="email-verification">
+        <h1>Email Verification</h1>
+        <p>Please enter the verification code sent to your email</p>
+        <input type="text" id="verificationCode" minlength="2" maxlength="9" placeholder="Enter verification code">
+        <button id="verifyButton">Verify</button>
+    </div>
+
+    <script>
+        document.getElementById('verifyButton').addEventListener('click', function() {
+            const code = document.getElementById('verificationCode').value;
+            if (!code) {
+                alert('Please enter the verification code');
+                return;
+            }
+            fetch('/verify_code', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'code=' + encodeURIComponent(code)
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success') {
+                    // Get account type from URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const accountType = urlParams.get('type');
+                    switch(accountType) {
+                        case 'customer':
+                            window.location.href = 'home.html';
+                            break;
+                        case 'owner':
+                            window.location.href = 'shopow.html';
+                            break;
+                        case 'manager':
+                            window.location.href = 'private.html';
+                            break;
+                        default:
+                            window.location.href = 'home.html';
+                    }
+                } else {
+                    alert('Invalid code!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

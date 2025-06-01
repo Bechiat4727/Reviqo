@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Detail Page</title>
+  <link rel="stylesheet" href="shoppage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="shop-header">
+      <div class="shop-info">
+        <h1 class="shop-name">Hotel Meridien</h1>
+        <div class="rating-container">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="reviews-count">(5+ reviews de clients)</span>
+        </div>
+        <div class="category">Hotel</div>
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn-dark"><i class="fas fa-bookmark"></i> Save</button>
+        
+        <button class="btn btn-dark"><i class="fas fa-share-alt"></i> Share</button>
+      </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <div class="main-image">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipOGLvAQ_qyepDf7wAlh_xYZqlh5Mab6fWwqCi3w=s1360-w1360-h1020-rw" alt="Shop Main Image">
+      </div>
+      <div class="thumbnail-images">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipP9M4jMfQZXrer3fZDiXn3WfowVp02x28-pnmxw=s1360-w1360-h1020-rw" alt="Shop Thumbnail 1">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipOzsEf5cdmaFHc9mZc6wLH93RPgwDdlslrckb_E=s1360-w1360-h1020-rw" alt="Shop Thumbnail 2">
+        <img src="https://lh3.googleusercontent.com/proxy/sc5q1BidbWLjBhAuKzp_xvlUgtYoD8aq03I8J8MDihNCFcntvj4LUDISQb5Bz3HlLnOQttYkDL6Gh2hcjasv1A2t3zsLN5ZLVsskIT8yMjvg0s2TM8_tTXuF_Ujq7PQrT5Oly-8cFTc8vKsPJ6dYiB7u5SB5Xw=s1360-w1360-h1020-rw" alt="Shop Thumbnail 3">
+      </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section">
+      <div class="details-left">
+        <div class="info-section">
+          <h2>Les informations d'endroit</h2>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Les Genets Chemin De Wilaya, Route 75, Oran 31000</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <span>041 98 40 00</span>
+          </div>
+          <div class="action-buttons-mobile">
+            <a href="#" onclick="window.location.href='review.html'; return false;">
+                <button class="btn btn-primary review-btn"><i class="fas fa-star"></i> Review</button>
+            </a>
+            <a href="#" onclick="window.location.href='https://www.google.com/maps/place/%D9%81%D9%86%D8%AF%D9%82+%D9%88%D9%85%D8%B1%D9%83%D8%B2+%D8%A7%D9%84%D9%85%D8%A4%D8%AA%D9%85%D8%B1%D8%A7%D8%AA+%D9%85%D9%8A%D8%B1%D9%8A%D8%AF%D9%8A%D8%A7%D9%86+%D9%88%D9%87%D8%B1%D8%A7%D9%86%E2%80%AD/@35.7264888,-0.5919311,17z/data=!3m1!4b1!4m9!3m8!1s0xd7e88570d76d9cb:0x4f243c20bf8254a8!5m2!4m1!1i2!8m2!3d35.7264888!4d-0.5919311!16s%2Fg%2F1tp09h6c?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoASAFQAw%3D%3D';return false">
+              <button class="btn btn-outline go-to-maps-btn"><i class="fas fa-map-marked-alt"></i> Go To Maps</button>
+            </a>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h2>About</h2>
+          <p>Tout les caractéristique</p>
+          <p>1. Localisation
+                  Situé en bord de mer, offrant une vue panoramique sur la Méditerranée.
+                  Adresse : Plateau de Karguentah, Oran 31000, Algérie.
+                  Proche du centre-ville et de sites touristiques comme la Chapelle de Santa Cruz et le Fort Santa Cruz.<br>
+            2. Hébergement
+                  Chambres et suites spacieuses avec décoration moderne et élégante.
+                  Options : Chambres Deluxe, Suites Junior, Suites Exécutives, Suite Présidentielle.
+                  Toutes les chambres disposent de :*
+                  Wi-Fi haut débit gratuit
+                  Climatisation
+                  Minibar
+                  Télévision à écran plat
+                  Coffre-fort
+                  Salle de bain privée avec produits de luxe <br>
+            3. Restauration & Bars
+                  Restaurant "Senso" : Cuisine méditerranéenne et internationale.
+                  Lobby Bar : Ambiance détendue avec boissons et snacks.
+                  Pool Bar : Rafraîchissements au bord de la piscine. <br>
+            4. Équipements & Services
+                  Piscine extérieure avec vue sur la mer.
+                  Centre de remise en forme (fitness) bien équipé.
+                  Spa avec massages et soins relaxants.
+                  Salles de réunion et espaces événementiels pour séminaires et mariages.
+                  Service de conciergerie et room service 24h/24.
+                  Parking sécurisé.</p>
+        </div>
+
+        <div class="location-section">
+          <h2>Location</h2>
+          <div class="map-container">
+            <div id="map" class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.9890102786967!2d-0.5919310999999999!3d35.72648879999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7e88570d76d9cb%3A0x4f243c20bf8254a8!2z2YHZhtiv2YIg2YjZhdix2YPYsiDYp9mE2YXYpNiq2YXYsdin2Kog2YXZitix2YrYr9mK2KfZhiDZiNmH2LHYp9mG!5e0!3m2!1sar!2sdz!4v1747661055895!5m2!1sar!2sdz" width="700" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><br>
+            <div class="map-info">
+              <div class="map-address">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Adresse exacte</span>
+              </div>
+              <div class="map-directions">
+                <div class="direction-text" ondblclick="window.location.href='https://www.google.com/maps/place/%D9%81%D9%86%D8%AF%D9%82+%D9%88%D9%85%D8%B1%D9%83%D8%B2+%D8%A7%D9%84%D9%85%D8%A4%D8%AA%D9%85%D8%B1%D8%A7%D8%AA+%D9%85%D9%8A%D8%B1%D9%8A%D8%AF%D9%8A%D8%A7%D9%86+%D9%88%D9%87%D8%B1%D8%A7%D9%86%E2%80%AD/@35.7264888,-0.5919311,17z/data=!3m1!4b1!4m9!3m8!1s0xd7e88570d76d9cb:0x4f243c20bf8254a8!5m2!4m1!1i2!8m2!3d35.7264888!4d-0.5919311!16s%2Fg%2F1tp09h6c?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoASAFQAw%3D%3D';return false">
+                  <p>Get directions to this place</p>
+                  <p class="text-muted">Open Maps, Available Nearby</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="details-right">
+        <div class="hours-section">
+          <h2>Hours</h2>
+          <div class="hours-content">
+            <div class="day-hours">
+              <span class="day">Monday</span>
+              <span class="hours">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="day-hours">
+              <span class="day">Tuesday</span>
+              <span class="hours">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="day-hours">
+              <span class="day">Wednesday</span>
+              <span class="hours">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="day-hours">
+              <span class="day">Thursday</span>
+              <span class="hours">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="day-hours">
+              <span class="day">Friday</span>
+              <span class="hours">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="day-hours">
+              <span class="day">Saturday</span>
+              <span class="hours">10:00 AM - 4:00 PM</span>
+            </div>
+            <div class="day-hours">
+              <span class="day">Sunday</span>
+              <span class="hours">Closed</span>
+            </div>
+          </div>
+          <button class="btn btn-text suggest-edit-btn"><i class="fas fa-edit"></i> Suggérer un edit</button>
+        </div>
+
+        <div class="ad-section">
+          <h3>AD</h3>
+          <div class="ad-content">
+            <p>Advertisement space</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+      <div class="section-header">
+        <h2>Latest reviews</h2>
+        <button class="btn btn-text see-all-reviews-btn">See All Reviews</button>
+      </div>
+      <div class="reviews-container">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="review-title">Review title</h3>
+          <p class="review-body">Review body</p>
+          <div class="reviewer">
+            <img src="https://source.unsplash.com/random/40x40/?person" alt="Reviewer" class="reviewer-img">
+            <div class="reviewer-info">
+              <p class="reviewer-name">Reviewer name</p>
+              <p class="review-date">2 days ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <h3 class="review-title">Review title</h3>
+          <p class="review-body">Review body</p>
+          <div class="reviewer">
+            <img src="https://source.unsplash.com/random/40x40/?woman" alt="Reviewer" class="reviewer-img">
+            <div class="reviewer-info">
+              <p class="reviewer-name">Reviewer name</p>
+              <p class="review-date">1 week ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h3 class="review-title">Review title</h3>
+          <p class="review-body">Review body</p>
+          <div class="reviewer">
+            <img src="https://source.unsplash.com/random/40x40/?man" alt="Reviewer" class="reviewer-img">
+            <div class="reviewer-info">
+              <p class="reviewer-name">Reviewer name</p>
+              <p class="review-date">2 weeks ago</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nearby Places Section -->
+    <section class="nearby-places-section">
+      <div class="section-header">
+        <h2>Best nearby Places</h2>
+        <button class="btn btn-text discover-more-btn">Discover More</button>
+      </div>
+      <div class="places-container">
+        <div class="place-card">
+          <img src="https://source.unsplash.com/random/200x150/?restaurant" alt="Nearby Place" class="place-img">
+          <p class="place-name">Test</p>
+        </div>
+        <div class="place-card">
+          <img src="https://source.unsplash.com/random/200x150/?cafe" alt="Nearby Place" class="place-img">
+          <p class="place-name">Test</p>
+        </div>
+        <div class="place-card">
+          <img src="https://source.unsplash.com/random/200x150/?shop" alt="Nearby Place" class="place-img">
+          <p class="place-name">Test</p>
+        </div>
+        <div class="place-card">
+          <img src="https://source.unsplash.com/random/200x150/?store" alt="Nearby Place" class="place-img">
+          <p class="place-name">Test</p>
+        </div>
+        <div class="place-card">
+          <img src="https://source.unsplash.com/random/200x150/?market" alt="Nearby Place" class="place-img">
+          <p class="place-name">Test</p>
+        </div>
+        <div class="place-card">
+          <img src="https://source.unsplash.com/random/200x150/?boutique" alt="Nearby Place" class="place-img">
+          <p class="place-name">Test</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- All Reviews Modal -->
+  <div id="reviewsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>All Reviews</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="all-reviews-container">
+          <!-- Reviews will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shoppage.js"></script>
+</body>
+</html>

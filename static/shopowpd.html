@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Owner Dashboard</title>
+  <link rel="stylesheet" href="shopowdb.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-store"></i>
+      <span>ShopDashboard</span>
+    </div>
+    <div class="nav-links">
+      <div class="shop-info">
+        <img src="https://source.unsplash.com/random/100x100/?shop" alt="Shop Logo" class="shop-logo">
+        <span class="shop-name">My Shop</span>
+      </div>
+      <div class="nav-icons">
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-cog"></i>
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <ul class="menu">
+        <li class="menu-item active" data-tab="dashboard">
+          <i class="fas fa-chart-line"></i>
+          <span>Dashboard</span>
+        </li>
+        <li class="menu-item" data-tab="customers">
+          <i class="fas fa-users"></i>
+          <span>Customers</span>
+        </li>
+        <li class="menu-item" data-tab="reviews">
+          <i class="fas fa-star"></i>
+          <span>Reviews</span>
+        </li>
+        <li class="menu-item" data-tab="messages">
+          <i class="fas fa-comment-alt"></i>
+          <span>Messages</span>
+        </li>
+        <li class="menu-item" data-tab="vip-analytics">
+          <i class="fas fa-crown"></i>
+          <span>VIP Analytics</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Dashboard Tab -->
+      <div class="tab-content active" id="dashboard">
+        <div class="tab-header">
+          <h2>Dashboard</h2>
+          <div class="date-selector">
+            <button class="date-btn active">Today</button>
+            <button class="date-btn">Week</button>
+            <button class="date-btn">Month</button>
+            <button class="date-btn">Year</button>
+          </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-icon visitors">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Visitors</h3>
+              <p class="stat-value">1,254</p>
+              <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 12.5%</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon reviews">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Reviews</h3>
+              <p class="stat-value">4.7</p>
+              <p class="stat-change negative"><i class="fas fa-arrow-down"></i> 0.2%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-container">
+          <div class="chart-card">
+            <h3>Visitors Overview</h3>
+            <div class="chart-wrapper">
+              <canvas id="visitorsChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3>Reviews Breakdown</h3>
+            <div class="chart-wrapper">
+              <canvas id="reviewsChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+          <h3>Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon visitor">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="activity-details">
+                <p class="activity-title">New Visitor</p>
+                <p class="activity-desc">Someone from Algiers viewed your shop</p>
+                <p class="activity-time">10 minutes ago</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon review">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="activity-details">
+                <p class="activity-title">New Review</p>
+                <p class="activity-desc">Ahmed left a 5-star review</p>
+                <p class="activity-time">45 minutes ago</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon message">
+                <i class="fas fa-comment"></i>
+              </div>
+              <div class="activity-details">
+                <p class="activity-title">New Message</p>
+                <p class="activity-desc">Fatima asked about product availability</p>
+                <p class="activity-time">2 hours ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customers Tab -->
+      <div class="tab-content" id="customers">
+        <div class="tab-header">
+          <h2>Customer Analytics</h2>
+          <div class="search-container">
+            <input type="text" placeholder="Search customers...">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+
+        <!-- Customer Stats -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-details">
+              <h3>Total Customers</h3>
+              <p class="stat-value">856</p>
+              <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 5.2%</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="stat-details">
+              <h3>New Customers</h3>
+              <p class="stat-value">32</p>
+              <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 12.8%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer Demographics -->
+        <div class="charts-container">
+          <div class="chart-card">
+            <h3>Customer Demographics</h3>
+            <div class="chart-wrapper">
+              <canvas id="demographicsChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3>Customer Acquisition</h3>
+            <div class="chart-wrapper">
+              <canvas id="acquisitionChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Customers -->
+        <div class="top-customers">
+          <h3>Top Customers</h3>
+          <table class="customers-table">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Visits</th>
+                <th>Last Visit</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="customer-info">
+                    <img src="https://source.unsplash.com/random/40x40/?person" alt="Customer">
+                    <div>
+                      <p class="customer-name">Mohammed Ali</p>
+                      <p class="customer-email">mohammed@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>24</td>
+                <td>Yesterday</td>
+                <td><span class="status-badge vip">VIP</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-info">
+                    <img src="https://source.unsplash.com/random/40x40/?woman" alt="Customer">
+                    <div>
+                      <p class="customer-name">Amina Benali</p>
+                      <p class="customer-email">amina@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>18</td>
+                <td>3 days ago</td>
+                <td><span class="status-badge loyal">Loyal</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-info">
+                    <img src="https://source.unsplash.com/random/40x40/?man" alt="Customer">
+                    <div>
+                      <p class="customer-name">Karim Hadj</p>
+                      <p class="customer-email">karim@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>12</td>
+                <td>1 week ago</td>
+                <td><span class="status-badge active">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reviews Tab -->
+      <div class="tab-content" id="reviews">
+        <div class="tab-header">
+          <h2>Reviews & Ratings</h2>
+          <div class="filter-container">
+            <select id="reviewFilter">
+              <option value="all">All Reviews</option>
+              <option value="positive">Positive (4-5★)</option>
+              <option value="neutral">Neutral (3★)</option>
+              <option value="negative">Negative (1-2★)</option>
+              <option value="unanswered">Unanswered</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Reviews Overview -->
+        <div class="reviews-overview">
+          <div class="rating-summary">
+            <div class="average-rating">
+              <h3>4.7</h3>
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p>Based on 128 reviews</p>
+            </div>
+            <div class="rating-bars">
+              <div class="rating-bar">
+                <span>5</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 75%"></div>
+                </div>
+                <span>75%</span>
+              </div>
+              <div class="rating-bar">
+                <span>4</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 20%"></div>
+                </div>
+                <span>20%</span>
+              </div>
+              <div class="rating-bar">
+                <span>3</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 3%"></div>
+                </div>
+                <span>3%</span>
+              </div>
+              <div class="rating-bar">
+                <span>2</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 1%"></div>
+                </div>
+                <span>1%</span>
+              </div>
+              <div class="rating-bar">
+                <span>1</span>
+                <div class="bar-container">
+                  <div class="bar" style="width: 1%"></div>
+                </div>
+                <span>1%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews List -->
+        <div class="reviews-list">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <img src="https://source.unsplash.com/random/40x40/?person" alt="Reviewer">
+                <div>
+                  <p class="reviewer-name">Yasmine Khelifi</p>
+                  <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="review-date">2 days ago</div>
+            </div>
+            <div class="review-content">
+              <p>Excellent service and high-quality products! I'm very satisfied with my purchase and will definitely shop here again. The delivery was fast and the packaging was secure.</p>
+            </div>
+            <div class="review-actions">
+              <button class="reply-btn"><i class="fas fa-reply"></i> Reply</button>
+              <div class="review-reply-form hidden">
+                <textarea placeholder="Write your reply..."></textarea>
+                <div class="form-actions">
+                  <button class="cancel-reply">Cancel</button>
+                  <button class="submit-reply">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <img src="https://source.unsplash.com/random/40x40/?man" alt="Reviewer">
+                <div>
+                  <p class="reviewer-name">Omar Benmoussa</p>
+                  <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="review-date">1 week ago</div>
+            </div>
+            <div class="review-content">
+              <p>The product quality is good, but the delivery took longer than expected. I would appreciate faster shipping in the future.</p>
+            </div>
+            <div class="review-actions">
+              <button class="reply-btn"><i class="fas fa-reply"></i> Reply</button>
+              <div class="review-reply-form hidden">
+                <textarea placeholder="Write your reply..."></textarea>
+                <div class="form-actions">
+                  <button class="cancel-reply">Cancel</button>
+                  <button class="submit-reply">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <img src="https://source.unsplash.com/random/40x40/?woman" alt="Reviewer">
+                <div>
+                  <p class="reviewer-name">Leila Mansouri</p>
+                  <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="review-date">2 weeks ago</div>
+            </div>
+            <div class="review-content">
+              <p>Great products and reasonable prices. The customer service was very helpful when I had questions about my order.</p>
+            </div>
+            <div class="review-actions">
+              <button class="reply-btn"><i class="fas fa-reply"></i> Reply</button>
+              <div class="review-reply-form hidden">
+                <textarea placeholder="Write your reply..."></textarea>
+                <div class="form-actions">
+                  <button class="cancel-reply">Cancel</button>
+                  <button class="submit-reply">Submit</button>
+                </div>
+              </div>
+            </div>
+            <div class="shop-reply">
+              <div class="shop-reply-header">
+                <img src="https://source.unsplash.com/random/30x30/?shop" alt="Shop">
+                <p>Shop Response</p>
+              </div>
+              <p>Thank you for your kind words, Leila! We're glad you had a positive experience with our customer service team. We look forward to serving you again!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages Tab -->
+      <div class="tab-content" id="messages">
+        <div class="tab-header">
+          <h2>Customer Messages</h2>
+          <div class="search-container">
+            <input type="text" placeholder="Search messages...">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+
+        <div class="messages-container">
+          <div class="messages-sidebar">
+            <div class="message-filters">
+              <button class="message-filter active">All Messages</button>
+              <button class="message-filter">Unread</button>
+              <button class="message-filter">Answered</button>
+              <button class="message-filter">Unanswered</button>
+            </div>
+            <div class="conversation-list">
+              <div class="conversation active">
+                <img src="https://source.unsplash.com/random/40x40/?woman" alt="Customer">
+                <div class="conversation-info">
+                  <div class="conversation-header">
+                    <h4>Samira Hakim</h4>
+                    <span class="message-time">10:25 AM</span>
+                  </div>
+                  <p class="message-preview">Do you have this product in blue color?</p>
+                </div>
+              </div>
+              <div class="conversation unread">
+                <img src="https://source.unsplash.com/random/40x40/?man" alt="Customer">
+                <div class="conversation-info">
+                  <div class="conversation-header">
+                    <h4>Youcef Belhadj</h4>
+                    <span class="message-time">Yesterday</span>
+                  </div>
+                  <p class="message-preview">When will my order be shipped?</p>
+                </div>
+              </div>
+              <div class="conversation">
+                <img src="https://source.unsplash.com/random/40x40/?person" alt="Customer">
+                <div class="conversation-info">
+                  <div class="conversation-header">
+                    <h4>Nadia Taleb</h4>
+                    <span class="message-time">2 days ago</span>
+                  </div>
+                  <p class="message-preview">Thank you for your quick response!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="message-content">
+            <div class="message-header">
+              <div class="customer-info">
+                <img src="https://source.unsplash.com/random/40x40/?woman" alt="Customer">
+                <div>
+                  <h3>Samira Hakim</h3>
+                  <p>Customer since: Jan 2023</p>
+                </div>
+              </div>
+              <div class="message-actions">
+                <button><i class="fas fa-phone"></i></button>
+                <button><i class="fas fa-envelope"></i></button>
+                <button><i class="fas fa-ellipsis-v"></i></button>
+              </div>
+            </div>
+            <div class="messages-thread">
+              <div class="message customer">
+                <div class="message-bubble">
+                  <p>Hello, I'm interested in the leather jacket you have on your website. Do you have it in blue color?</p>
+                </div>
+                <span class="message-time">10:20 AM</span>
+              </div>
+              <div class="message shop">
+                <div class="message-bubble">
+                  <p>Hello Samira, thank you for your interest! Currently, we have the leather jacket in black, brown, and red. The blue color is out of stock, but we expect to receive new stock next week.</p>
+                </div>
+                <span class="message-time">10:23 AM</span>
+              </div>
+              <div class="message customer">
+                <div class="message-bubble">
+                  <p>Do you have this product in blue color?</p>
+                </div>
+                <span class="message-time">10:25 AM</span>
+              </div>
+              <div class="message-date">
+                <span>Today</span>
+              </div>
+            </div>
+            <div class="message-input">
+              <textarea placeholder="Type your message..."></textarea>
+              <div class="input-actions">
+                <button><i class="fas fa-paperclip"></i></button>
+                <button><i class="fas fa-smile"></i></button>
+                <button class="send-btn"><i class="fas fa-paper-plane"></i> Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIP Analytics Tab -->
+      <div class="tab-content" id="vip-analytics">
+        <div class="tab-header">
+          <h2>VIP Analytics</h2>
+        </div>
+
+        <div class="vip-intro">
+          <div class="vip-icon">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div class="vip-message">
+            <h3>Unlock Advanced Analytics</h3>
+            <p>Upgrade to our premium analytics packages to gain deeper insights into your customers, sales trends, and business performance.</p>
+          </div>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div class="pricing-plans">
+          <div class="plan free">
+            <div class="plan-header">
+              <h3>FREE</h3>
+              <div class="plan-price">
+                <span class="currency">DZD</span>
+                <span class="amount">0</span>
+              </div>
+            </div>
+            <div class="plan-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Limited listings/features (basic free)</li>
+                <li><i class="fas fa-check"></i> Low search ranking</li>
+                <li><i class="fas fa-check"></i> Limited Access</li>
+              </ul>
+            </div>
+            <button class="plan-btn current">Current Plan</button>
+          </div>
+
+          <div class="plan daily">
+            <div class="plan-header">
+              <h3>DAILY</h3>
+              <div class="plan-price">
+                <span class="currency">DZD</span>
+                <span class="amount">800</span>
+                <span class="period">/day</span>
+              </div>
+            </div>
+            <div class="plan-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Top placement above results for 24h</li>
+                <li><i class="fas fa-check"></i> "Sponsored" status</li>
+                <li><i class="fas fa-check"></i> High Report features</li>
+                <li><i class="fas fa-check"></i> Includes dashboard and metrics</li>
+                <li><i class="fas fa-check"></i> Basic VIP support</li>
+              </ul>
+            </div>
+            <button class="plan-btn select" data-plan="daily">Select</button>
+          </div>
+
+          <div class="plan monthly">
+            <div class="plan-header">
+              <h3>MONTHLY</h3>
+              <div class="plan-price">
+                <span class="currency">DZD</span>
+                <span class="amount">3000</span>
+                <span class="period">/mo</span>
+              </div>
+            </div>
+            <div class="plan-features">
+              <ul>
+                <li><i class="fas fa-check"></i> For high growth shops, priority space</li>
+                <li><i class="fas fa-check"></i> Reply to customer reviews</li>
+                <li><i class="fas fa-check"></i> More analytics (heat maps)</li>
+                <li><i class="fas fa-check"></i> Advanced online technology</li>
+                <li><i class="fas fa-check"></i> Dedicated support for visibility</li>
+              </ul>
+            </div>
+            <button class="plan-btn select" data-plan="monthly">Select</button>
+          </div>
+
+          <div class="plan yearly">
+            <div class="plan-header">
+              <h3>YEARLY</h3>
+              <div class="plan-price">
+                <span class="currency">DZD</span>
+                <span class="amount">30000</span>
+                <span class="period">/year</span>
+              </div>
+            </div>
+            <div class="plan-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Unlimited featured business</li>
+                <li><i class="fas fa-check"></i> Advanced analytics</li>
+                <li><i class="fas fa-check"></i> Advanced analytics (customer demographics, user trends)</li>
+                <li><i class="fas fa-check"></i> Featured in "TOP 10" section</li>
+                <li><i class="fas fa-check"></i> Priority customer support</li>
+              </ul>
+            </div>
+            <button class="plan-btn select" data-plan="yearly">Select</button>
+          </div>
+
+          <div class="plan verified">
+            <div class="plan-header">
+              <h3>VERIFIED SIGNAL</h3>
+              <div class="plan-price">
+                <span class="currency">DZD</span>
+                <span class="amount">6500</span>
+              </div>
+            </div>
+            <div class="plan-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Get this now</li>
+                <li><i class="fas fa-check"></i> Increased checkout success</li>
+                <li><i class="fas fa-check"></i> Verified status</li>
+              </ul>
+            </div>
+            <button class="plan-btn select" data-plan="verified">Select</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Select Payment Method</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="selected-plan-info">
+          <h3>Selected Plan: <span id="selectedPlanName">Daily</span></h3>
+          <p>Amount: <span id="selectedPlanPrice">DZD 2500</span></p>
+        </div>
+        <div class="payment-methods">
+          <div class="payment-method" data-method="baridimob">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/download-removebg-preview%20%288%29-QqWWAOkCUACiGtkugfKrukYIpJwhJn.png" alt="BARIDI MOB" class="payment-logo">
+            <span>BARIDI MOB</span>
+          </div>
+          <div class="payment-method" data-method="edahabia">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/download-removebg-preview%20%287%29-Zw7y4U5Khdbzd64ITdVjWdR6S6KoOM.png" alt="EDAHABIA" class="payment-logo">
+            <span>EDAHABIA</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelPayment">Cancel</button>
+        <button id="proceedPayment" disabled>Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="shopowdb.js"></script>
+</body>
+</html>

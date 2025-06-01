@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Type Selection</title>
+    <link rel="stylesheet" href="type.css">
+    <style>
+        /* Modal styles for the confirmation dialog */
+        #confirmationModal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .modal-buttons {
+            margin-top: 20px;
+        }
+        .modal-button {
+            padding: 8px 16px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .confirm {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .cancel {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<script>
+document.getElementById('typeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Gather all data from localStorage and the selected account type
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/signup';
+
+    function append(name, value) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    }
+
+    append('nom', localStorage.getItem('nom'));
+    append('prenom', localStorage.getItem('prenom'));
+    append('email', localStorage.getItem('email'));
+    append('password', localStorage.getItem('password'));
+    append('accountType', document.querySelector('input[name="accountType"]:checked').value);
+
+    document.body.appendChild(form);
+    form.submit();
+});
+</script>
+
+    <form class="form">
+        <h1 class="Account Type"><img src="img/profile.png" alt="Account Type" width="35" height="35"> Account Type</h1>
+        
+        <label class="checkbox-wrapper">
+            <input type="checkbox" name="accountType" value="customer">
+            <div class="checkmark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M20 6L9 17L4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <span class="label">Customer</span>
+        </label><br>
+        
+        <label class="checkbox-wrapper">
+            <input type="checkbox" name="accountType" value="owner">
+            <div class="checkmark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M20 6L9 17L4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <span class="label">Magasin Owner</span>
+        </label><br>
+        <!--
+        <label class="checkbox-wrapper">
+            <input type="checkbox" name="accountType" value="manager">
+            <div class="checkmark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M20 6L9 17L4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <span class="label">Managers Only</span>
+        </label>
+        -->
+        
+        <button type="button" class="ButtonNext" id="nextButton">Next</button>
+    </form>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal">
+        <div class="modal-content">
+            <p id="modalMessage">Are you sure you want to continue as a <span id="accountTypeDisplay"></span>?</p>
+            <div class="modal-buttons">
+                <button class="modal-button confirm" id="confirmYes">Yes</button>
+                <button class="modal-button cancel" id="confirmNo">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Modal for Magasin Owner -->
+<div id="photoModal" style="display:none; position:fixed; z-index:101; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content">
+        <p>Please upload your reigistre de commerce</p>
+        <input type="file" id="ownerPhotoInput" accept=".pdf,image/*"><br><br>
+        <div class="modal-buttons">
+            <button class="modal-button confirm" id="photoConfirm">Continue</button>
+            <button class="modal-button cancel" id="photoCancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    // All your existing script remains
+    // Modal elements
+        const modal = document.getElementById('confirmationModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const accountTypeDisplay = document.getElementById('accountTypeDisplay');
+        const confirmYes = document.getElementById('confirmYes');
+        const confirmNo = document.getElementById('confirmNo');
+
+
+    // Add these at the top after the other DOM elements
+    const photoModal = document.getElementById('photoModal');
+    const ownerPhotoInput = document.getElementById('ownerPhotoInput');
+    const photoConfirm = document.getElementById('photoConfirm');
+    const photoCancel = document.getElementById('photoCancel');
+
+
+
+
+        // Make checkboxes mutually exclusive
+        const checkboxes = document.querySelectorAll('input[name="accountType"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if(this.checked) {
+                    checkboxes.forEach(cb => {
+                        if(cb !== this) cb.checked = false;
+                    });
+                }
+            });
+        });
+
+
+        // Store the selected account type
+        let selectedAccountType = null;
+
+        // Handle the Next button click
+        document.getElementById('nextButton').addEventListener('click', function() {
+            const selectedCheckbox = document.querySelector('input[name="accountType"]:checked');
+            
+            if(!selectedCheckbox) {
+                alert('Please select an account type');
+                return;
+            }
+
+            selectedAccountType = selectedCheckbox.value;
+            
+            // Show confirmation dialog with account type
+            const accountTypeNames = {
+                'customer': 'Customer',
+                'owner': 'Magasin Owner',
+                'manager': 'Manager'
+            };
+            
+            accountTypeDisplay.textContent = accountTypeNames[selectedAccountType];
+            modal.style.display = 'block';
+
+            if(selectedAccountType === 'owner') {
+                photoModal.style.display = 'block';
+                photoConfirm.addEventListener('click', function() {
+    if(!ownerPhotoInput.files.length) {
+        alert('Please select a photo.');
+        return;
+    }
+    // Optionally, you can upload the file here via AJAX or FormData
+    photoModal.style.display = 'none';
+    modal.style.display = 'block'; // Show confirmation after photo
+});
+photoCancel.addEventListener('click', function() {
+    photoModal.style.display = 'none';
+    document.querySelector('input[value="owner"]').checked = false;
+    selectedAccountType = null;
+    ownerPhotoInput.value = '';
+});
+
+// Optionally, close photo modal when clicking outside
+window.addEventListener('click', function(event) {
+    if (event.target === photoModal) {
+        photoModal.style.display = 'none';
+        document.querySelector('input[value="owner"]').checked = false;
+        selectedAccountType = null;
+        ownerPhotoInput.value = '';
+    }
+});
+            } else if (selectedAccountType === 'customer') {
+                photoModal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        });
+
+        // Handle confirmation modal buttons
+        confirmYes.addEventListener('click', function() {
+            modal.style.display = 'none';
+            // Navigate to confirm.html with account type parameter
+            window.location.href = `confirm.html?type=${selectedAccountType}`;
+        });
+
+        confirmNo.addEventListener('click', function() {
+            modal.style.display = 'none';
+            // Uncheck the checkbox
+            document.querySelector(input[value="${selectedAccountType}"]).checked = false;
+            selectedAccountType = null;
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.querySelector(input[value="${selectedAccountType}"]).checked = false;
+                selectedAccountType = null;
+            }
+        });
+
+    // Inside nextButton click handler
+    document.getElementById('nextButton').addEventListener('click', function() {
+        const selectedCheckbox = document.querySelector('input[name="accountType"]:checked');
+
+        if(!selectedCheckbox) {
+            alert('Please select an account type');
+            return;
+        }
+
+        selectedAccountType = selectedCheckbox.value;
+
+        const accountTypeNames = {
+            'customer': 'Customer',
+            'owner': 'Magasin Owner',
+            'manager': 'Manager'
+        };
+
+        if(selectedAccountType === 'owner') {
+            photoModal.style.display = 'block';
+        } else {
+            accountTypeDisplay.textContent = accountTypeNames[selectedAccountType];
+            modal.style.display = 'block';
+        }
+    });
+
+    // Photo modal logic
+    photoConfirm.addEventListener('click', function() {
+        if(!ownerPhotoInput.files.length) {
+            alert('Please select a photo.');
+            return;
+        }
+
+        photoModal.style.display = 'none';
+        accountTypeDisplay.textContent = 'Magasin Owner';
+        modal.style.display = 'block';
+    });
+
+    photoCancel.addEventListener('click', function() {
+        photoModal.style.display = 'none';
+        document.querySelector('input[value="owner"]').checked = false;
+        selectedAccountType = null;
+        ownerPhotoInput.value = '';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal || event.target === photoModal) {
+            modal.style.display = 'none';
+            photoModal.style.display = 'none';
+            if (selectedAccountType === 'owner') {
+                document.querySelector(`input[value="${selectedAccountType}"]`).checked = false;
+                ownerPhotoInput.value = '';
+            }
+            selectedAccountType = null;
+        }
+    });
+</script>
+
+<script>
+document.getElementById('confirmYes').addEventListener('click', function() {
+    // Gather all data from localStorage and the selected account type
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/signup';
+
+    function append(name, value) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    }
+
+    append('nom', localStorage.getItem('nom'));
+    append('prenom', localStorage.getItem('prenom'));
+    append('email', localStorage.getItem('email'));
+    append('password', localStorage.getItem('password'));
+    append('accountType', selectedAccountType);
+
+    document.body.appendChild(form);
+    form.submit();
+});
+</script>
+
+</body>
+</html>
