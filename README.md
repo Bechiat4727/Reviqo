@@ -6,8 +6,7 @@ Ce dépôt contient **le front-end et le back-end du site Reviqo**.
 
 
 ```bash
-git clone <URL-DU-REPO>
-cd <NOM-DU-DOSSIER>
+git clone <https://github.com/Gartoufa/ProjetTutor-2.git>
 ```
 
 ### Installer les dépendances
