@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revigo - Business Listing</title>
+    <link rel="stylesheet" href="magasin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Minimal inline styles for modal functionality */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .share-options {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .share-options a {
+            display: block;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .share-options a:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <i class="fa-solid fa-location-dot"></i>
+                <span class="logo-text"><img src="img/logo.png" width="25" height="25" alt=""></span>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input">
+                <button class="search-button">Search</button>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="sign-in">Sign in</a>
+                <a href="#" class="user-icon"><i class="fa-solid fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="business-header">
+            <div class="business-title">
+                <h1>Name of business</h1>
+                <div class="rating">
+                    <span class="stars" id="animated-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </span>
+                    <span class="rating-count">(4.0/5.0)</span>
+                    <span class="review-count">12 reviews</span>
+                </div>
+                <div class="business-actions">
+                    <button class="action-button black" id="share-button"><i class="fa-solid fa-share"></i> Share</button>
+                    <div class="share-options" id="share-options">
+                        <a href="#" onclick="shareOn('facebook')"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                        <a href="#" onclick="shareOn('twitter')"><i class="fa-brands fa-twitter"></i> Twitter</a>
+                        <a href="#" onclick="shareOn('whatsapp')"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="#" onclick="shareOn('email')"><i class="fa-solid fa-envelope"></i> Email</a>
+                        <a href="#" onclick="shareOn('copy')"><i class="fa-solid fa-copy"></i> Copy Link</a>
+                    </div>
+                    <button class="action-button black"><i class="fa-solid fa-heart"></i> Save</button>
+                    <button class="action-button outline" onclick="redirectToReview()">
+                        <i class="fa-solid fa-pencil"></i> Write a review
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="business-gallery">
+            <div class="gallery-main">
+                <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=400&width=600');"></div>
+            </div>
+            <div class="gallery-side">
+                <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=200&width=300');"></div>
+                <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=200&width=300');"></div>
+                <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=200&width=300');"></div>
+                <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=200&width=300');"></div>
+            </div>
+        </section>
+
+        <section class="business-details">
+            <div class="info-section">
+                <h2>Key information overview</h2>
+                <div class="info-items">
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Currently Closed (Open 9am)</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Phone</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Website</span>
+                        <span class="info-value">www.businesswebsite.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hours-section">
+                <h2>Hours</h2>
+                <div class="hours-content">
+                    <button class="orange-button">See hours</button>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h2><i class="fa-solid fa-phone"></i> Contact us</h2>
+                <div class="contact-content"></div>
+            </div>
+        </section>
+
+        <section class="location-section">
+            <h2>Location</h2>
+            <div class="location-content">
+                <div class="map-placeholder">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Business address goes here</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="ad-section">
+            <h2>Ad</h2>
+            <div class="ad-content"></div>
+        </section>
+
+        <section class="latest-reviews">
+            <h2>Latest reviews</h2>
+            <div class="review-grid">
+                <div class="review-item">
+                    <div class="review-rating animated-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="review-date">01.01.23</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-rating animated-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="review-date">01.01.23</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-rating animated-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="review-date">01.01.23</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nearby-places">
+            <h2>Near nearby Places</h2>
+            <div class="places-grid">
+                <div class="place-item">
+                    <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=100&width=100');"></div>
+                    <div class="place-name">Place 1</div>
+                </div>
+                <div class="place-item">
+                    <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=100&width=100');"></div>
+                    <div class="place-name">Place 2</div>
+                </div>
+                <div class="place-item">
+                    <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=100&width=100');"></div>
+                    <div class="place-name">Place 3</div>
+                </div>
+                <div class="place-item">
+                    <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=100&width=100');"></div>
+                    <div class="place-name">Place 4</div>
+                </div>
+                <div class="place-item">
+                    <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=100&width=100');"></div>
+                    <div class="place-name">Place 5</div>
+                </div>
+                <div class="place-item">
+                    <div class="placeholder-image" onclick="openModal(this)" style="cursor: pointer; background-image: url('/placeholder.svg?height=100&width=100');"></div>
+                    <div class="place-name">Place 6</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="explore-section">
+            <h2>Explore Revisted reviews</h2>
+            <div class="explore-content">
+                <span>Explore more</span>
+                <button class="orange-button small">See all</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-star orange"></i>
+                <span class="logo-text">Revigo</span>
+            </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> info@reviqo.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +213 675 12 95 12</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Es senia - Oran 31000</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button class="orange-button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-text">
+                    <span>Need help?</span>
+                </div>
+                <div class="chat-bubble">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture%20d%E2%80%99%C3%A9cran%202025-05-11%20191904-zxdlxaW3r5BLhJML9BMgAmuaLTaiZP.png" alt="Chat avatar" class="chat-avatar">
+                    <span>Need help?</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Image zoom functionality
+        function openModal(element) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            
+            // Get background image URL from the element
+            const bgImage = element.style.backgroundImage;
+            const imageUrl = bgImage.replace('url("', '').replace('")', '');
+            
+            modal.style.display = "block";
+            modalImg.src = imageUrl;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        // Share button functionality
+        const shareButton = document.getElementById("share-button");
+        const shareOptions = document.getElementById("share-options");
+
+        shareButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            
+            // Position the share options below the share button
+            const buttonRect = shareButton.getBoundingClientRect();
+            shareOptions.style.top = (buttonRect.bottom + window.scrollY) + "px";
+            shareOptions.style.left = (buttonRect.left + window.scrollX) + "px";
+            
+            // Toggle display
+            if (shareOptions.style.display === "block") {
+                shareOptions.style.display = "none";
+            } else {
+                shareOptions.style.display = "block";
+            }
+        });
+
+        // Close share options when clicking elsewhere
+        document.addEventListener("click", function(event) {
+            if (event.target !== shareButton && event.target !== shareOptions) {
+                shareOptions.style.display = "none";
+            }
+        });
+
+        // Share functionality
+        function shareOn(platform) {
+            const url = window.location.href;
+            const title = document.title;
+            
+            switch(platform) {
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+                    break;
+                case 'whatsapp':
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`, '_blank');
+                    break;
+                case 'email':
+                    window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+                    break;
+                case 'copy':
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('Link copied to clipboard!');
+                    }).catch(err => {
+                        console.error('Could not copy text: ', err);
+                    });
+                    break;
+            }
+            
+            // Close share options after sharing
+            shareOptions.style.display = "none";
+        }
+
+        // Animated stars functionality
+        function animateStars() {
+            const starSets = document.querySelectorAll('.animated-stars');
+            
+            starSets.forEach(starSet => {
+                const stars = starSet.querySelectorAll('i');
+                
+                stars.forEach((star, index) => {
+                    // Create a random animation
+                    const delay = Math.random() * 2;
+                    const duration = 0.5 + Math.random() * 1;
+                    
+                    // Apply animation
+                    star.style.animation = `starPulse ${duration}s infinite ${delay}s`;
+                    star.style.display = 'inline-block';
+                    star.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Add star animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes starPulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.3); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Function to get URL parameters
+        function getUrlParameters() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                id: params.get('id'),
+                name: params.get('name'),
+                address: params.get('address'),
+                rating: params.get('rating'),
+                category: params.get('category'),
+                image: params.get('image')
+            };
+        }
+
+        // Function to populate the page with restaurant data
+        function populateRestaurantData() {
+            const restaurant = getUrlParameters();
+            
+            // Update business title
+            document.querySelector('.business-title h1').textContent = restaurant.name;
+            
+            // Update rating if available
+            if (restaurant.rating) {
+                const ratingCount = document.querySelector('.rating-count');
+                if (ratingCount) {
+                    ratingCount.textContent = `(${restaurant.rating}/5.0)`;
+                }
+                
+                // Update stars
+                const stars = document.querySelectorAll('#animated-stars .fa-star');
+                const rating = parseFloat(restaurant.rating);
+                stars.forEach((star, index) => {
+                    if (index < Math.floor(rating)) {
+                        star.className = 'fa-solid fa-star';
+                    } else {
+                        star.className = 'fa-regular fa-star';
+                    }
+                });
+            }
+
+            // Update address
+            const addressElements = document.querySelectorAll('.info-items .info-item i.fa-location-dot');
+            addressElements.forEach(element => {
+                const addressSpan = element.nextElementSibling;
+                if (addressSpan) {
+                    addressSpan.textContent = restaurant.address;
+                }
+            });
+
+            // Update category if available
+            if (restaurant.category) {
+                const categoryElements = document.querySelectorAll('.info-items .category');
+                categoryElements.forEach(element => {
+                    element.textContent = restaurant.category;
+                });
+            }
+
+            // Update images if available
+            if (restaurant.image && restaurant.image !== 'default-image.jpg') {
+                const images = document.querySelectorAll('.placeholder-image');
+                images.forEach(image => {
+                    image.style.backgroundImage = `url('${restaurant.image}')`;
+                });
+            }
+        }
+
+        // Initialize animations when page loads
+        window.onload = function() {
+            animateStars();
+            populateRestaurantData();
+        };
+
+        function redirectToReview() {
+            const params = new URLSearchParams(window.location.search);
+            const restaurantId = params.get('id');
+            const restaurantName = params.get('name');
+            
+            // Redirect to review.html with restaurant info
+            window.location.href = `/static/review.html?restaurantId=${restaurantId}&restaurantName=${restaurantName}&returnUrl=${encodeURIComponent(window.location.href)}`;
+        }
+    </script>
+</body>
+</html>

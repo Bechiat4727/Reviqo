@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Profile</title>
+  <link rel="stylesheet" href="profilcst.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <div class="logo-placeholder" id="logoPreview">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Logo</span>
+      </div>
+    </div>
+    <div class="nav-title">My Profile</div>
+    <div class="nav-actions">
+      <button class="save-btn" id="saveProfileBtn">Save Changes</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Sidebar / Navigation -->
+    <div class="sidebar">
+      <div class="profile-photo-container">
+        <div class="profile-photo" id="profilePhotoPreview">
+          <i class="fas fa-user"></i>
+          <span>Add Photo</span>
+        </div>
+        <input type="file" id="profilePhotoUpload" accept="image/*" class="file-input">
+      </div>
+      <ul class="nav-tabs">
+        <li class="tab active" data-tab="personal-info">
+          <i class="fas fa-user-circle"></i> Personal Information
+        </li>
+        <li class="tab" data-tab="preferences">
+          <i class="fas fa-sliders-h"></i> Preferences
+        </li>
+        <li class="tab" data-tab="feedback">
+          <i class="fas fa-comment-alt"></i> Feedback
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Personal Information Tab -->
+      <div class="tab-content active" id="personal-info">
+        <h2>Personal Information</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Enter your first name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Enter your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="birthdate">Date of Birth</label>
+          <input type="date" id="birthdate">
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Preferences Tab -->
+      <div class="tab-content" id="preferences">
+        <h2>Preferences</h2>
+        <div class="form-group">
+          <label for="language">Preferred Language</label>
+          <select id="language">
+            <option value="english">English</option>
+            <option value="french">French</option>
+            <option value="arabic">Arabic</option>
+            <option value="spanish">Spanish</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Notification Preferences</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="emailNotifications" checked>
+              <span>Email Notifications</span>
+            </label>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="smsNotifications">
+              <span>SMS Notifications</span>
+            </label>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="pushNotifications" checked>
+              <span>Push Notifications</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Theme Preference</label>
+          <div class="theme-options">
+            <div class="theme-option active" data-theme="light">
+              <div class="theme-preview light-theme"></div>
+              <span>Light</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <div class="theme-preview dark-theme"></div>
+              <span>Dark</span>
+            </div>
+            <div class="theme-option" data-theme="system">
+              <div class="theme-preview system-theme"></div>
+              <span>System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Tab -->
+      <div class="tab-content" id="feedback">
+        <h2>Your Feedback</h2>
+        <div class="form-group">
+          <label>First Impression with our Website</label>
+          <div class="impression-options">
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="easy-to-use">
+                <span>Easy to use</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="visually-appealing">
+                <span>Visually appealing</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="fast">
+                <span>Fast loading</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="informative">
+                <span>Informative</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="intuitive">
+                <span>Intuitive navigation</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="confusing">
+                <span>Confusing layout</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="slow">
+                <span>Slow performance</span>
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="impression" value="cluttered">
+                <span>Too cluttered</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="feedbackComments">Additional Comments</label>
+          <textarea id="feedbackComments" placeholder="Share your thoughts about our website..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>How likely are you to recommend us?</label>
+          <div class="rating-container">
+            <div class="rating-scale">
+              <span>Not likely</span>
+              <div class="rating-numbers">
+                <div class="rating-number" data-value="1">1</div>
+                <div class="rating-number" data-value="2">2</div>
+                <div class="rating-number" data-value="3">3</div>
+                <div class="rating-number" data-value="4">4</div>
+                <div class="rating-number" data-value="5">5</div>
+                <div class="rating-number" data-value="6">6</div>
+                <div class="rating-number" data-value="7">7</div>
+                <div class="rating-number" data-value="8">8</div>
+                <div class="rating-number" data-value="9">9</div>
+                <div class="rating-number" data-value="10">10</div>
+              </div>
+              <span>Very likely</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal" id="confirmationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Profile Updated</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="confirmation-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <p>Your profile has been successfully updated!</p>
+        <p>Thank you for sharing your feedback with us. We appreciate your input and will use it to improve your experience.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn" id="modalCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="profilcst.js"></script>
+</body>
+</html>

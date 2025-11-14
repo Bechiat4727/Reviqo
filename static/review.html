@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Experience</title>
+  <link rel="stylesheet" href="review.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="review-card">
+      <div class="review-header">
+        <h2>Rate Your Experience</h2>
+        <p class="subtitle">Tell us about your visit</p>
+      </div>
+      
+      <div class="review-body">
+        <!-- Overall Rating -->
+        <div class="rating-section">
+          <h3>Overall Rating</h3>
+          <div class="star-rating">
+            <div class="stars">
+              <input type="radio" id="star5" name="overall" value="5">
+              <label for="star5"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="star4" name="overall" value="4">
+              <label for="star4"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="star3" name="overall" value="3">
+              <label for="star3"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="star2" name="overall" value="2">
+              <label for="star2"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="star1" name="overall" value="1">
+              <label for="star1"><i class="fas fa-star"></i></label>
+            </div>
+            <span class="rating-text">Select your rating</span>
+          </div>
+        </div>
+        
+        <!-- Specific Ratings -->
+        <div class="criteria-section">
+          <h3>Rate Specific Aspects</h3>
+          
+          <!-- Customer Service -->
+          <div class="criteria-item" data-criteria="service">
+            <div class="criteria-label">
+              <i class="fas fa-user-tie"></i>
+              <span>Customer Service</span>
+            </div>
+            <div class="criteria-rating">
+              <div class="checkbox-group">
+                <input type="radio" id="service1" name="service" value="1">
+                <label for="service1">Poor</label>
+                
+                <input type="radio" id="service2" name="service" value="2">
+                <label for="service2">Fair</label>
+                
+                <input type="radio" id="service3" name="service" value="3">
+                <label for="service3">Good</label>
+                
+                <input type="radio" id="service4" name="service" value="4">
+                <label for="service4">Excellent</label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Parking -->
+          <div class="criteria-item" data-criteria="parking">
+            <div class="criteria-label">
+              <i class="fas fa-parking"></i>
+              <span>Parking Availability</span>
+            </div>
+            <div class="criteria-rating">
+              <div class="checkbox-group">
+                <input type="radio" id="parking1" name="parking" value="1">
+                <label for="parking1">Poor</label>
+                
+                <input type="radio" id="parking2" name="parking" value="2">
+                <label for="parking2">Fair</label>
+                
+                <input type="radio" id="parking3" name="parking" value="3">
+                <label for="parking3">Good</label>
+                
+                <input type="radio" id="parking4" name="parking" value="4">
+                <label for="parking4">Excellent</label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Cleanliness -->
+          <div class="criteria-item" data-criteria="cleanliness">
+            <div class="criteria-label">
+              <i class="fas fa-broom"></i>
+              <span>Cleanliness</span>
+            </div>
+            <div class="criteria-rating">
+              <div class="checkbox-group">
+                <input type="radio" id="clean1" name="cleanliness" value="1">
+                <label for="clean1">Poor</label>
+                
+                <input type="radio" id="clean2" name="cleanliness" value="2">
+                <label for="clean2">Fair</label>
+                
+                <input type="radio" id="clean3" name="cleanliness" value="3">
+                <label for="clean3">Good</label>
+                
+                <input type="radio" id="clean4" name="cleanliness" value="4">
+                <label for="clean4">Excellent</label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Value for Money -->
+          <div class="criteria-item" data-criteria="value">
+            <div class="criteria-label">
+              <i class="fas fa-coins"></i>
+              <span>Value for Money</span>
+            </div>
+            <div class="criteria-rating">
+              <div class="checkbox-group">
+                <input type="radio" id="value1" name="value" value="1">
+                <label for="value1">Poor</label>
+                
+                <input type="radio" id="value2" name="value" value="2">
+                <label for="value2">Fair</label>
+                
+                <input type="radio" id="value3" name="value" value="3">
+                <label for="value3">Good</label>
+                
+                <input type="radio" id="value4" name="value" value="4">
+                <label for="value4">Excellent</label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product Quality -->
+          <div class="criteria-item" data-criteria="quality">
+            <div class="criteria-label">
+              <i class="fas fa-check-circle"></i>
+              <span>Product Quality</span>
+            </div>
+            <div class="criteria-rating">
+              <div class="checkbox-group">
+                <input type="radio" id="quality1" name="quality" value="1">
+                <label for="quality1">Poor</label>
+                
+                <input type="radio" id="quality2" name="quality" value="2">
+                <label for="quality2">Fair</label>
+                
+                <input type="radio" id="quality3" name="quality" value="3">
+                <label for="quality3">Good</label>
+                
+                <input type="radio" id="quality4" name="quality" value="4">
+                <label for="quality4">Excellent</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Optional Comment -->
+        <div class="comment-section">
+          <h3>Additional Comments <span class="optional">(Optional)</span></h3>
+          <textarea placeholder="Share more details about your experience..."></textarea>
+        </div>
+      </div>
+      
+      <div class="review-footer">
+        <button class="btn-cancel" onclick="goBack()">Cancel</button>
+        <button class="btn-submit" onclick="submitReview()">Submit Review</button>
+      </div>
+      
+      <!-- Success Message (Hidden by default) -->
+      <div class="success-message">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Thank You!</h3>
+        <p>Your review has been submitted successfully.</p>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="review.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get restaurant info from URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const restaurantName = params.get('restaurantName');
+    
+    // Update the review title with restaurant name
+    document.querySelector('.review-header h2').textContent = `Rate Your Experience at ${restaurantName}`;
+});
+
+function goBack() {
+    const params = new URLSearchParams(window.location.search);
+    const returnUrl = params.get('returnUrl');
+    window.location.href = returnUrl || '/';
+}
+
+function submitReview() {
+    // Get overall rating (required)
+    const overallRating = document.querySelector('input[name="overall"]:checked')?.value;
+    if (!overallRating) {
+        alert('Please provide an overall rating');
+        return;
+    }
+
+    // Get other ratings
+    const serviceRating = document.querySelector('input[name="service"]:checked')?.value;
+    const parkingRating = document.querySelector('input[name="parking"]:checked')?.value;
+    const cleanlinessRating = document.querySelector('input[name="cleanliness"]:checked')?.value;
+    const valueRating = document.querySelector('input[name="value"]:checked')?.value;
+    const qualityRating = document.querySelector('input[name="quality"]:checked')?.value;
+    const comment = document.querySelector('textarea').value;
+
+    const params = new URLSearchParams(window.location.search);
+    const restaurantId = params.get('restaurantId');
+    const returnUrl = params.get('returnUrl');
+
+    // Submit review to backend
+    fetch('/submit_review', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            restaurant_id: restaurantId,
+            overall_rating: overallRating,
+            service_rating: serviceRating,
+            parking_rating: parkingRating,
+            cleanliness_rating: cleanlinessRating,
+            value_rating: valueRating,
+            quality_rating: qualityRating,
+            comment: comment
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === 'success') {
+            // Show success message
+            document.querySelector('.success-message').classList.add('active');
+            
+            // Add the new rating to the return URL
+            const returnUrlObj = new URL(returnUrl);
+            returnUrlObj.searchParams.set('rating', overallRating);
+            
+            // Redirect back after 2 seconds
+            setTimeout(() => {
+                window.location.href = returnUrlObj.toString();
+            }, 2000);
+        } else {
+            throw new Error(data.message || 'Submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to submit review. Please try again.');
+    });
+}
+</script>
+</body>
+</html>

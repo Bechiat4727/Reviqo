@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="welcome.css">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-name" id="profileName"></div>
+                <div class="profile-email" id="profileEmail"></div>
+            </div>
+        </div>
+        <button class="welcome" type="button" onclick="handleRedirect()">Discover Reviews</button>
+        <script>
+            function handleRedirect() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const type = urlParams.get('type');
+                redirectBasedOnType(type);
+            }
+
+            function redirectBasedOnType(type) {
+                console.log('Redirecting with type:', type);
+                
+                switch(type) {
+                    case 'owner':
+                        window.location.href = 'shopow.html';
+                        break;
+                    case 'manager':
+                        window.location.href = 'private.html';
+                        break;
+                    case 'client':
+                        window.location.href = 'home.html';
+                        break;
+                    default:
+                        console.error('Unknown account type:', type);
+                        return; // Don't redirect if type is unknown
+                }
+            }
+            
+            // Only verify the type exists on page load, don't redirect automatically
+            document.addEventListener('DOMContentLoaded', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const type = urlParams.get('type');
+                
+                if (!type) {
+                    console.error('No account type specified');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Update button text based on type
+                const welcomeButton = document.querySelector('.welcome');
+                if (welcomeButton) {
+                    welcomeButton.textContent = `Discover ${type.charAt(0).toUpperCase() + type.slice(1)} Dashboard`;
+                }
+            });
+        </script>
+    </body>
+</html>

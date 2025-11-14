@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Review Manager</title>
+    <link rel="stylesheet" href="private.css">
+</head>
+<body>
+    <!-- Dashboard Section -->
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Review Manager</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="analytics">Analytics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="shops">Shop Owners</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="reviews">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="users">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="messages">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="settings">Settings</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Dashboard Overview -->
+            <div class="content-section active" id="dashboard">
+                <div class="page-header">
+                    <h1>Dashboard Overview</h1>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Shops</h3>
+                        <p>24</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Reviews</h3>
+                        <p>142</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Users</h3>
+                        <p>87</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Rating</h3>
+                        <p>4.2</p>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-05-19</td>
+                                <td>John Doe</td>
+                                <td>Added Review</td>
+                                <td>5-star review for "Coffee Shop"</td>
+                            </tr>
+                            <tr>
+                                <td>2025-05-18</td>
+                                <td>Jane Smith</td>
+                                <td>Registered</td>
+                                <td>New shop owner registration</td>
+                            </tr>
+                            <tr>
+                                <td>2025-05-18</td>
+                                <td>Admin</td>
+                                <td>Deleted Review</td>
+                                <td>Removed inappropriate content</td>
+                            </tr>
+                            <tr>
+                                <td>2025-05-17</td>
+                                <td>Mike Johnson</td>
+                                <td>Updated Profile</td>
+                                <td>Changed shop description</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div class="content-section" id="analytics">
+                <div class="page-header">
+                    <h1>Analytics Dashboard</h1>
+                    <div class="date-filter">
+                        <label for="dateRange">Time Period:</label>
+                        <select id="dateRange" class="form-control">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30" selected>Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                            <option value="365">Last Year</option>
+                            <option value="all">All Time</option>
+                        </select>
+                        <button class="btn btn-primary" id="exportAnalyticsBtn">Export Data</button>
+                    </div>
+                </div>
+
+                <!-- Registration Summary -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Registrations</h3>
+                        <p>111</p>
+                        <span class="trend positive">+15.3%</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Shop Owners</h3>
+                        <p>24</p>
+                        <span class="trend positive">+8.2%</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Customers</h3>
+                        <p>87</p>
+                        <span class="trend positive">+17.5%</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Conversion Rate</h3>
+                        <p>3.8%</p>
+                        <span class="trend negative">-0.5%</span>
+                    </div>
+                </div>
+
+                <!-- Registration Charts -->
+                <div class="analytics-card">
+                    <div class="section-header">
+                        <h2>Registration Trends</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="registrationChart" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- User Distribution -->
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="section-header">
+                            <h2>User Type Distribution</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="userDistributionChart" height="250"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="section-header">
+                            <h2>User Activity</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="userActivityChart" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website Integration -->
+                <div class="analytics-card">
+                    <div class="section-header">
+                        <h2>Website Integration</h2>
+                    </div>
+                    <div class="integration-stats">
+                        <div class="integration-item">
+                            <h3>API Calls</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 75%;">12,458</div>
+                            </div>
+                            <p class="integration-detail">75% of daily limit</p>
+                        </div>
+                        <div class="integration-item">
+                            <h3>Widget Loads</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 62%;">5,234</div>
+                            </div>
+                            <p class="integration-detail">62% success rate</p>
+                        </div>
+                        <div class="integration-item">
+                            <h3>Embedded Reviews</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 42%;">87</div>
+                            </div>
+                            <p class="integration-detail">42% of shops using</p>
+                        </div>
+                        <div class="integration-item">
+                            <h3>Referral Traffic</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 23%;">3,127</div>
+                            </div>
+                            <p class="integration-detail">23% of total traffic</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Integration Details -->
+                <div class="analytics-card">
+                    <div class="section-header">
+                        <h2>Integration Details</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Integration Point</th>
+                                <th>Status</th>
+                                <th>API Calls</th>
+                                <th>Success Rate</th>
+                                <th>Avg. Response Time</th>
+                                <th>Last Check</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>User Authentication</td>
+                                <td><span class="status-badge success">Active</span></td>
+                                <td>12,458</td>
+                                <td>99.8%</td>
+                                <td>124ms</td>
+                                <td>2025-05-19 14:23</td>
+                            </tr>
+                            <tr>
+                                <td>Review Submission</td>
+                                <td><span class="status-badge success">Active</span></td>
+                                <td>5,872</td>
+                                <td>99.5%</td>
+                                <td>187ms</td>
+                                <td>2025-05-19 14:23</td>
+                            </tr>
+                            <tr>
+                                <td>Shop Registration</td>
+                                <td><span class="status-badge success">Active</span></td>
+                                <td>1,245</td>
+                                <td>100%</td>
+                                <td>210ms</td>
+                                <td>2025-05-19 14:22</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Processing</td>
+                                <td><span class="status-badge warning">Degraded</span></td>
+                                <td>3,421</td>
+                                <td>97.2%</td>
+                                <td>356ms</td>
+                                <td>2025-05-19 14:20</td>
+                            </tr>
+                            <tr>
+                                <td>Email Notifications</td>
+                                <td><span class="status-badge success">Active</span></td>
+                                <td>8,745</td>
+                                <td>99.9%</td>
+                                <td>98ms</td>
+                                <td>2025-05-19 14:23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Integration Code -->
+                <div class="analytics-card">
+                    <div class="section-header">
+                        <h2>Integration Code</h2>
+                    </div>
+                    <div class="code-container">
+                        <pre><code>&lt;script src="https://reviewmanager.com/widget.js" 
+        data-shop-id="YOUR_SHOP_ID"
+        data-theme="light"
+        data-display="slider"&gt;&lt;/script&gt;</code></pre>
+                        <button class="btn btn-primary" id="copyCodeBtn">Copy Code</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shop Owners Section -->
+            <div class="content-section" id="shops">
+                <div class="page-header">
+                    <h1>Shop Owners Management</h1>
+                    <button class="btn btn-primary" id="addShopBtn">Add New Shop</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search shops..." id="shopSearch">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Shop Name</th>
+                            <th>Owner</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="shopsTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>Coffee Haven</td>
+                            <td>John Smith</td>
+                            <td>Cafe</td>
+                            <td>4.8</td>
+                            <td>Active</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-shop">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-shop">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-shop">Contact</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Burger Palace</td>
+                            <td>Sarah Johnson</td>
+                            <td>Restaurant</td>
+                            <td>4.2</td>
+                            <td>Active</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-shop">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-shop">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-shop">Contact</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Tech Gadgets</td>
+                            <td>Mike Wilson</td>
+                            <td>Electronics</td>
+                            <td>3.9</td>
+                            <td>Pending</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-shop">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-shop">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-shop">Contact</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Fashion Hub</td>
+                            <td>Emily Davis</td>
+                            <td>Clothing</td>
+                            <td>4.5</td>
+                            <td>Active</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-shop">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-shop">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-shop">Contact</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="content-section" id="reviews">
+                <div class="page-header">
+                    <h1>Reviews Management</h1>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search reviews..." id="reviewSearch">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Shop</th>
+                            <th>Rating</th>
+                            <th>Comment</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reviewsTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>Alex Johnson</td>
+                            <td>Coffee Haven</td>
+                            <td>5</td>
+                            <td>Great coffee and atmosphere!</td>
+                            <td>2025-05-15</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-review">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-review">Delete</button>
+                                <button class="btn btn-primary btn-sm feature-review">Feature</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Maria Garcia</td>
+                            <td>Burger Palace</td>
+                            <td>4</td>
+                            <td>Delicious burgers but slow service.</td>
+                            <td>2025-05-14</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-review">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-review">Delete</button>
+                                <button class="btn btn-primary btn-sm feature-review">Feature</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>David Lee</td>
+                            <td>Tech Gadgets</td>
+                            <td>3</td>
+                            <td>Average products, could be better.</td>
+                            <td>2025-05-13</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-review">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-review">Delete</button>
+                                <button class="btn btn-primary btn-sm feature-review">Feature</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Sophia Martinez</td>
+                            <td>Fashion Hub</td>
+                            <td>5</td>
+                            <td>Amazing collection and great customer service!</td>
+                            <td>2025-05-12</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-review">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-review">Delete</button>
+                                <button class="btn btn-primary btn-sm feature-review">Feature</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Users Section -->
+            <div class="content-section" id="users">
+                <div class="page-header">
+                    <h1>Users Management</h1>
+                    <button class="btn btn-primary" id="addUserBtn">Add New User</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search users..." id="userSearch">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>Customer</td>
+                            <td>2025-01-15</td>
+                            <td>Active</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-user">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-user">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-user">Contact</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td>Shop Owner</td>
+                            <td>2025-02-20</td>
+                            <td>Active</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-user">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-user">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-user">Contact</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mike Johnson</td>
+                            <td>mike@example.com</td>
+                            <td>Shop Owner</td>
+                            <td>2025-03-10</td>
+                            <td>Inactive</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-user">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-user">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-user">Contact</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Sarah Williams</td>
+                            <td>sarah@example.com</td>
+                            <td>Customer</td>
+                            <td>2025-04-05</td>
+                            <td>Active</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm edit-user">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-user">Delete</button>
+                                <button class="btn btn-primary btn-sm contact-user">Contact</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Messages Section -->
+            <div class="content-section" id="messages">
+                <div class="page-header">
+                    <h1>Messages</h1>
+                    <button class="btn btn-primary" id="composeBtn">Compose Message</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search messages..." id="messageSearch">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messagesTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>John Smith (Coffee Haven)</td>
+                            <td>Admin</td>
+                            <td>Question about review policy</td>
+                            <td>2025-05-18</td>
+                            <td>Unread</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-message">View</button>
+                                <button class="btn btn-danger btn-sm delete-message">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Admin</td>
+                            <td>Sarah Johnson (Burger Palace)</td>
+                            <td>Your account has been approved</td>
+                            <td>2025-05-17</td>
+                            <td>Read</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-message">View</button>
+                                <button class="btn btn-danger btn-sm delete-message">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mike Wilson (Tech Gadgets)</td>
+                            <td>Admin</td>
+                            <td>Request to remove a review</td>
+                            <td>2025-05-16</td>
+                            <td>Unread</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-message">View</button>
+                                <button class="btn btn-danger btn-sm delete-message">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Admin</td>
+                            <td>All Shop Owners</td>
+                            <td>New feature announcement</td>
+                            <td>2025-05-15</td>
+                            <td>Read</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-message">View</button>
+                                <button class="btn btn-danger btn-sm delete-message">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="content-section" id="settings">
+                <div class="page-header">
+                    <h1>Settings</h1>
+                </div>
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>General Settings</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="siteName">Site Name</label>
+                        <input type="text" id="siteName" class="form-control" value="Review Manager">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteDescription">Site Description</label>
+                        <textarea id="siteDescription" class="form-control" rows="3">A platform for managing shop reviews and ratings.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Contact Email</label>
+                        <input type="email" id="contactEmail" class="form-control" value="contact@reviewmanager.com">
+                    </div>
+                    <button class="btn btn-primary" id="saveGeneralSettings">Save Changes</button>
+                </div>
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Review Settings</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="moderationEnabled">
+                            <input type="checkbox" id="moderationEnabled" checked> Enable Review Moderation
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="allowAnonymous">
+                            <input type="checkbox" id="allowAnonymous"> Allow Anonymous Reviews
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="minReviewLength">Minimum Review Length (characters)</label>
+                        <input type="number" id="minReviewLength" class="form-control" value="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxReviewLength">Maximum Review Length (characters)</label>
+                        <input type="number" id="maxReviewLength" class="form-control" value="500">
+                    </div>
+                    <button class="btn btn-primary" id="saveReviewSettings">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add Shop Modal -->
+    <div class="modal" id="addShopModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Shop</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="shopName">Shop Name</label>
+                <input type="text" id="shopName" class="form-control" placeholder="Enter shop name">
+            </div>
+            <div class="form-group">
+                <label for="ownerName">Owner Name</label>
+                <input type="text" id="ownerName" class="form-control" placeholder="Enter owner name">
+            </div>
+            <div class="form-group">
+                <label for="shopCategory">Category</label>
+                <select id="shopCategory" class="form-control">
+                    <option value="">Select category</option>
+                    <option value="Cafe">Cafe</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="shopEmail">Email</label>
+                <input type="email" id="shopEmail" class="form-control" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="shopStatus">Status</label>
+                <select id="shopStatus" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger close-modal">Cancel</button>
+                <button class="btn btn-primary" id="saveShopBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Review Modal -->
+    <div class="modal" id="editReviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Review</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="reviewUser">User</label>
+                <input type="text" id="reviewUser" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="reviewShop">Shop</label>
+                <input type="text" id="reviewShop" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="reviewRating">Rating</label>
+                <select id="reviewRating" class="form-control">
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reviewComment">Comment</label>
+                <textarea id="reviewComment" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger close-modal">Cancel</button>
+                <button class="btn btn-primary" id="saveReviewBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal" id="addUserModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New User</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="userName">Name</label>
+                <input type="text" id="userName" class="form-control" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="userEmail">Email</label>
+                <input type="email" id="userEmail" class="form-control" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="userRole">Role</label>
+                <select id="userRole" class="form-control">
+                    <option value="Customer">Customer</option>
+                    <option value="Shop Owner">Shop Owner</option>
+                    <option value="Manager">Manager</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="userStatus">Status</label>
+                <select id="userStatus" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="userPassword">Password</label>
+                <input type="password" id="userPassword" class="form-control" placeholder="Enter password">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger close-modal">Cancel</button>
+                <button class="btn btn-primary" id="saveUserBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compose Message Modal -->
+    <div class="modal" id="composeMessageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Compose Message</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="messageRecipient">To</label>
+                <select id="messageRecipient" class="form-control">
+                    <option value="">Select recipient</option>
+                    <option value="all_shops">All Shop Owners</option>
+                    <option value="all_customers">All Customers</option>
+                    <option value="all_users">All Users</option>
+                    <option value="john@example.com">John Doe (Customer)</option>
+                    <option value="jane@example.com">Jane Smith (Shop Owner)</option>
+                    <option value="mike@example.com">Mike Johnson (Shop Owner)</option>
+                    <option value="sarah@example.com">Sarah Williams (Customer)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="messageSubject">Subject</label>
+                <input type="text" id="messageSubject" class="form-control" placeholder="Enter subject">
+            </div>
+            <div class="form-group">
+                <label for="messageBody">Message</label>
+                <textarea id="messageBody" class="form-control" rows="6" placeholder="Type your message here..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger close-modal">Cancel</button>
+                <button class="btn btn-primary" id="sendMessageBtn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Message Modal -->
+    <div class="modal" id="viewMessageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="viewMessageSubject">Message Subject</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>From: <span id="viewMessageFrom">John Smith (Coffee Haven)</span></label>
+            </div>
+            <div class="form-group">
+                <label>To: <span id="viewMessageTo">Admin</span></label>
+            </div>
+            <div class="form-group">
+                <label>Date: <span id="viewMessageDate">2025-05-18</span></label>
+            </div>
+            <div class="form-group">
+                <div id="viewMessageBody" style="padding: 15px; border: 1px solid #ddd; border-radius: 4px; min-height: 150px;">
+                    Hello Admin,<br><br>
+                    I have a question about your review policy. Can customers edit their reviews after posting them?<br><br>
+                    Thanks,<br>
+                    John
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger close-modal">Close</button>
+                <button class="btn btn-primary" id="replyMessageBtn">Reply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="private.js"></script>
+</body>
+</html>
