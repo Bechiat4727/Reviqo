@@ -1,4 +1,4 @@
-# Plateforme Web de Présentation de Magasins
+# Plateforme Web de Reviews de Magasins
 
 **Reviqo** est une plateforme web simple permettant de présenter différents magasins et leurs informations.  
 Le site est principalement statique, avec un backend léger utilisant Flask pour le rendu des pages.
